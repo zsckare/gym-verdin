@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # Namespace for the API
+  # Api with subdomain, api.mysite.org as '/...'
+    # namespace :api,
+    #   defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'  do
+    # end
+  # Api uri formated mysite.org/api/...
+  namespace :api, defaults: { format: :json } do
+
+  end
+
+  
 end
