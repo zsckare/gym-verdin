@@ -9,3 +9,5 @@ MYSQL_PASSWORD: "Your_Mysql_password"
 CLOUDINARY_CLOUD: "your_cloudinary_cloud_name"
 CLOUDINARY_API_KEY: "your_cloudinary_api_key"
 CLOUDINARY_API_SECRET: "your_cloudinary_api_secret"
+
+API_HOST: "your_host_name"   or   API_HOST: "api.your_host_name"
