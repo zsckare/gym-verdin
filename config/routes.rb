@@ -1,6 +1,7 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  devise_for :users
   # Namespace for the API
 
   # Api with subdomain, api.mysite.org as '/...'

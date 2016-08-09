@@ -36,6 +36,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
+# Using Devise for authentication
+gem "devise"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -51,6 +53,7 @@ group :test do
   gem "rspec-rails", "~> 3.5.0"
   gem "factory_girl_rails"
   gem 'ffaker'
+  gem "shoulda-matchers"
 end
 
 group :development do
