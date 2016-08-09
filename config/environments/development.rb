@@ -48,6 +48,17 @@ Rails.application.configure do
   # Options for Mailer
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # Mailer
+  config.action_mailer.smtp_settings = {
+      :address              => ENV["SMPT_LOCAL_ADDRESS"],
+      :port                 => ENV["SMPT_LOCAL_PORT"],
+      :domain               => ENV["SMPT_LOCAL_DOMAIN"],
+      :user_name            => ENV["SMPT_LOCAL_USER"],
+      :password             => ENV["SMPT_LOCAL_PASSWORD"],
+      :authentication       => :login,
+      :enable_starttls_auto => true
+  }
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 

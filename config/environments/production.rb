@@ -78,6 +78,17 @@ Rails.application.configure do
   # Options for the mailer
   config.action_mailer.default_url_options = { host: ENV["HOST"], port: ENV["PORT"] }
 
+  # Mailer
+  config.action_mailer.smtp_settings = {
+      :address              => ENV["SMPT_MAILER_ADDRESS"],
+      :port                 => ENV["SMPT_MAILER_PORT"],
+      :domain               => ENV["SMPT_MAILER_DOMAIN"],
+      :user_name            => ENV["SMPT_MAILER_USER"],
+      :password             => ENV["SMPT_MAILER_PASSWORD"],
+      :authentication       => :login,
+      :enable_starttls_auto => true
+  }
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
