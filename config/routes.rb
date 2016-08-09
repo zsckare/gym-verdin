@@ -1,7 +1,6 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
-  devise_for :users
   # Namespace for the API
 
   # Api with subdomain, api.mysite.org as '/...'
@@ -16,6 +15,16 @@ Rails.application.routes.draw do
       # We are going to list our resources here
     end
   end
+
+  # Change path to '/' if you want direct access to users views
+  devise_for :users, path: 'users', controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    confirmations: 'users/confirmations',
+    passwords: 'users/passwords',
+    unlocks: 'users/unlocks',
+    omniauth: 'users/omniauth'
+  }, paths: {confirmation: 'verification'}
 
 
 end
