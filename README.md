@@ -11,3 +11,4 @@ CLOUDINARY_API_KEY: "your_cloudinary_api_key"
 CLOUDINARY_API_SECRET: "your_cloudinary_api_secret"
 
 API_HOST: "your_host_name"   or   API_HOST: "api.your_host_name"
+SECRET_KEY_BASE: "acb0293182d7f89e79a"
