@@ -1,6 +1,8 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  get 'welcome/index'
+
   # Namespace for the API
 
   # Api with subdomain, api.mysite.org as '/...'
