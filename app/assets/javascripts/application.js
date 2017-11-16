@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require popper
+//= require bootstrap
+//= require vue
+//= require axios
 //= require turbolinks
 //= require_tree .
