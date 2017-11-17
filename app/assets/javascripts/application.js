@@ -55,12 +55,103 @@ function initVue(){
             }
         });
     }
+    if (document.querySelector("#client")) {
+        new Vue({
+            el: "#client",
+            data:{
+                user:{},
+                comment: '',
+                valoracion:0,
+                coach:0
+            },
+            created: function(){
+                this.setUserData();
+            },
+            methods:{
+                setUserData: function(){
+                    this.user = Lockr.get('user');
+                    console.log(JSON.stringify(this.user));
+                    var fullname = this.user.name + " "+this.user.last_name;
+                    $("#nombre").html(fullname);
+                },
+                valorar: function(){
+                    console.log(this.comment);
+                    this.coach = $("#coach_id").val();
+                    console.log($("#coach_id").val());
+                }
+            }
+        });
+    }
+    if (document.querySelector("#navigation")) {
+        new Vue({
+            el: "#navigation",
+            data:{
+                user:{}
+            },
+            created: function(){
+                this.setUserData();
+            },
+            methods:{
+                setUserData: function(){
+                    this.user = Lockr.get('user');
+                    console.log(JSON.stringify(this.user));
+                    var fullname = this.user.name + " "+this.user.last_name;
+                    $("#nombre").html(fullname);
+                    var link = "/client?uid="+this.user.id;
+                    $("#home_link").attr("href", link);
+                    var link2 = "/client?uid="+this.user.id+"/edit/";
+                    $("#edit_profile").attr("href", link2);
+                    
+                }
+            }
+        });
+    }
+
+    if (document.querySelector("#nueva_rutina")) {
+        new Vue({
+            el:"#nueva_rutina",
+            data: {
+                ejS:[],
+                ejI:[],
+                ejA:[],
+                ejC:[]
+            },
+            created: function(){
+                this.setExercises();
+            },
+            methods: {
+                setExercises: function(){
+                    var sup = $("#superior").data("options");
+                    this.ejS = sup;
+                    var inf = $("#inferior").data("options");
+                    var ab = $("#abdomen").data("options");
+                    var car = $("#cardio").data("options");
+                    this.ejA = ab;
+                    this.ejC = car;
+                    this.ejI = inf;
+                    
+                }
+            }
+        });
+    }
 }
 
 
 
 ready = function(){
     initVue();
+    var options = {
+        max_value: 5,
+        step_size: 1,
+        initial_value: 3,
+        selected_symbol_type: 'fontawesome_star', // Must be a key from symbols
+        cursor: 'default',
+        readonly: false,
+        change_once: false, // Determines if the rating can only be set once
+        
+    }
+    
+    $(".rating").rate(options);
 }
 
 $(document).on('turbolinks:load',ready);

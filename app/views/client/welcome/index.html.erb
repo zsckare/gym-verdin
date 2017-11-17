@@ -1,0 +1,38 @@
+<div id="client">
+	<div class="row" style="margin-top:2em;">
+		<div class="col-sm">
+			<div class="card">
+				<div class="card-body">
+					<a href="/client/valorar?uid=<%=@client.id%>">
+						<h3>Valora al entrenador</h3>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm">
+				<div class="card">
+					<div class="card-body">
+						<a href="/client/routines?uid=<%=@client.id%>">
+							<h3>Crea tus rutinas</h3>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+					<div class="card">
+						<div class="card-body">
+							<a href="/client/blogs/<%=@blog.id%>"><h3>
+									Checa el blog del entrenador
+								</h3></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm">
+						<div class="card">
+							<div class="card-body">
+								<h3>Calcula tus calorias</h3>
+							</div>
+						</div>
+					</div>
+	</div>
+</div>

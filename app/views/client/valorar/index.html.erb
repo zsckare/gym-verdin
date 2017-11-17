@@ -1,0 +1,41 @@
+<div id="client">
+        <div class="row" style="margin-top:3em;">
+            <div class="col-sm">
+                <div class="card">
+                    <div class="card-header">
+                        Califica al entrenador
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm">
+                                <h3><span id="coach"><%=@coach.name%></span></h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <h4>Valorar:</h4>
+                            </div>
+                            <div class="col-lg-9">
+                                    <div class="rating"></div>
+                                    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="form-group">
+                                        <label for="">Comentario(los comentarios son anonimos)</label>
+                                        <textarea name="" id="" class="form-control" v-model="comment"></textarea>
+                                </div>
+                            </div>
+                            <input type="hidden" id="coach_id" value="<%=@coach.id%>">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <button class="btn btn-raised btn-primary" @click="valorar()">Enviar valoracion</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

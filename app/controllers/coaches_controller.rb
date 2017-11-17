@@ -28,6 +28,7 @@ class CoachesController < ApplicationController
 
     respond_to do |format|
       if @coach.save
+        Blog.create(coach_id: @coach.id)
         format.html { redirect_to @coach, notice: 'Coach was successfully created.' }
         format.json { render :show, status: :created, location: @coach }
       else
@@ -60,9 +61,23 @@ class CoachesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   def front
   end
+
   def login
+  end
+
+  def info
+    coach = Coach.find(params[:id])
+    dis = Discipline.find(coach.discipline_id)
+    blog = Blog.find(coach.id)
+    json = {
+      name: coach.name,
+      discipline: dis.name,
+      blog: blog.id
+    }
+    render json: json
   end
   private
     # Use callbacks to share common setup or constraints between actions.

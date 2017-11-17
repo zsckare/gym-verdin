@@ -1,0 +1,23 @@
+<div class="row" style="margin-top:3em;">
+    <div class="col-sm">
+            <h3 class="center-text">Blog</h3>
+    </div>
+</div>
+<div class="row">
+<%@posts.each do |post|%>
+
+    <div class="col-sm-4" style="margin-bottom:1em;">
+        <a href="/client/blogs/<%=@blog.id%>/posts/<%=post.id%>" class="">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="center-text"><%=post.title%></h4>
+                </div>
+                <div class="card-body">
+                    <p class="center-text">Creado el <%=post.created_at.strftime('%F')%></p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+<%end%>
+</div>

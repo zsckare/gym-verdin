@@ -18,9 +18,7 @@ Rails.application.routes.draw do
   resources :exercises
   resources :categories
   
-  namespace :client do
-    root 'welcome#index'
-  end
+  
 
   # Change path to '/' if you want direct access to users views
   devise_for :users, path: 'users', controllers: {
@@ -31,6 +29,13 @@ Rails.application.routes.draw do
     unlocks: 'users/unlocks',
     omniauth: 'users/omniauth'
   }, paths: {confirmation: 'verification'}
-
+  namespace :client do
+    root 'welcome#index'
+    resources :valorar
+    resources :routines
+    resources :blogs do
+      resources :posts
+    end
+  end
 
 end

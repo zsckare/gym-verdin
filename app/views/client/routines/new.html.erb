@@ -1,0 +1,93 @@
+<div id="nueva_rutina">
+    <div class="row" style="margin-top:3em;">
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Crea tu rutina</h3>
+                </div>
+                <div class="card-body">
+                    <div id="rutinas">
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm">
+                                        <h4>Parte superior</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                
+                                        <div class="col-sm" v-for="item in ejS">
+                                                
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="">
+                                                      {{item.name}}
+                                                    </label>
+                                                  </div>
+                                            </div>
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm"><h4>Parte inferior</h4></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm" v-for="item in ejI">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" value="">
+                                            {{item.name}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <h4>Abdomen</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm" v-for="item in ejA">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" value="">
+                                            {{item.name}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <h4>Cardio</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm" v-for="item in ejC">
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" value="">
+                                                {{item.name}}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div id="superior" data-options="<%=@superior.to_json%>"></div>
+    <div id="inferior" data-options="<%=@inferior.to_json%>"></div>
+    <div id="abdomen" data-options="<%=@abdomen.to_json%>"></div>
+    <div id="cardio" data-options="<%=@cardio.to_json%>"></div>
+    
+</div>

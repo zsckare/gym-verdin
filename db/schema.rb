@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117012258) do
+ActiveRecord::Schema.define(version: 20171117165610) do
 
   create_table "assessments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "points"
@@ -81,6 +81,15 @@ ActiveRecord::Schema.define(version: 20171117012258) do
     t.index ["blog_id"], name: "index_posts_on_blog_id", using: :btree
   end
 
+  create_table "routines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "client_id"
+    t.string   "exercise"
+    t.string   "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_routines_on_client_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -113,4 +122,5 @@ ActiveRecord::Schema.define(version: 20171117012258) do
   add_foreign_key "coaches", "disciplines"
   add_foreign_key "exercises", "categories"
   add_foreign_key "posts", "blogs"
+  add_foreign_key "routines", "clients"
 end
