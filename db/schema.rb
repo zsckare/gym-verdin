@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116222629) do
+ActiveRecord::Schema.define(version: 20171117012258) do
 
   create_table "assessments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "points"
@@ -41,8 +41,9 @@ ActiveRecord::Schema.define(version: 20171116222629) do
     t.integer  "coach_id"
     t.string   "user"
     t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "password_hash"
     t.index ["coach_id"], name: "index_clients_on_coach_id", using: :btree
   end
 
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(version: 20171116222629) do
     t.string   "password"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "password_hash"
     t.index ["discipline_id"], name: "index_coaches_on_discipline_id", using: :btree
   end
 

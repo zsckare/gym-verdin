@@ -1,6 +1,14 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  root 'welcome#index'
+  
+  get 'registro', to: 'clients#new'
+  get 'login-client', to: 'clients#front'
+  post 'login-c', to: 'clients#login'
+  get 'login-coach', to:'coaches#front'
+  post 'login-coach-back', to: 'coaches#login'
+  
   resources :assessments
   resources :posts
   resources :blogs
@@ -9,9 +17,10 @@ Rails.application.routes.draw do
   resources :disciplines
   resources :exercises
   resources :categories
-  root 'welcome#index'
-
- 
+  
+  namespace :client do
+    root 'welcome#index'
+  end
 
   # Change path to '/' if you want direct access to users views
   devise_for :users, path: 'users', controllers: {
