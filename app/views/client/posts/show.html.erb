@@ -5,9 +5,9 @@
                 <h4><%=@post.title%></h4>
             </div>
             <div class="card-body">
-                <p>
-                    <%=@post.content%>
-                </p>
+                
+                    <%=@post.content.html_safe%>
+                
             </div>
         </div>
     </div>

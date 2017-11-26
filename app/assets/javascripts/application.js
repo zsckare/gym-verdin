@@ -186,6 +186,9 @@ ready = function(){
     }
     
     $(".rating").rate(options);
+    
+        $('textarea#froala-editor').froalaEditor()
+      
 }
 
 $(document).on('turbolinks:load',ready);

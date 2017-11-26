@@ -1,12 +1,68 @@
-<div class="row">
+<div class="row" style="margin-top: 2em;">
 	<div class="col-sm">
+		<a href="/entrenador/blogs/<%=@blog.id%>?uid=<%=@coach.id%>" class="btn btn-raised">
+			Regresar
+		</a>
+	</div>
+</div>
+<div class="row" style="margin-top: 1em;">
+	<div class="col-sm card" style="padding: 1em;">
+		<div class="">
+				<div class="col-sm">
 		<div class="row">
-			<h3>Nuevo Post</h3>
+			<div class="col-sm">
+				<h3>Nuevo Post</h3>
+			</div>
 		</div>
-		<div class="row">
-			<form class="col-sm">
-				
-			</form>
+		<div class="row" style="margin-top: 1em;">
+			<div class="col-sm">
+				<%= form_for @post, url: entrenador_blogs_path do |f| %>
+				  <% if @post.errors.any? %>
+				    <div id="error_explanation">
+				      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+				      <ul>
+				      <% @post.errors.full_messages.each do |message| %>
+				        <li><%= message %></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
+
+				  <div class="row">
+				  	<div class="col-sm">
+				  		
+				  	<div class="form-group">
+					    <%= f.label :title, "Titulo" %>
+					    <%= f.text_field :title , class: 'form-control'%>
+					  </div>
+				  	</div>
+				  </div>
+
+				  <div class="row">
+				  	<div class="col-sm">
+				  		<div class="field">
+					    <%= f.text_area:content, id: 'froala-editor' %>
+					  </div>
+				  	</div>
+				  </div>
+
+				  <input type="hidden" name="bid" value="<%=@blog.id%>">
+
+				 <div class="row" style="margin-top: .5em;">
+				 	 <div class="col-sm">
+				 	 	<div class="actions">
+					    <%= f.submit "Crear Post", class: 'btn btn-raised btn-info' %>
+					  </div>
+				 	 </div>
+				 </div>
+				<% end %>
+			</div>	
+
+		</div>
+		
+	</div>
 		</div>
 	</div>
 </div>
+

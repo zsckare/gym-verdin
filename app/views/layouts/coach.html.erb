@@ -8,6 +8,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.2/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.2/css/froala_style.min.css' rel='stylesheet' type='text/css' />
+     
+    <!-- Include JS file. -->
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.2/js/froala_editor.min.js'></script>
+
+
   </head>
 
   <body style="background-color:#eceff1">
@@ -20,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a id="home_link" class="nav-link" href="">Inicio <span class="sr-only">(current)</span></a>
+                      <a id="home_link" class="nav-link" href="/entrenador?uid=<%=@coach.id%>">Inicio <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="" id="edit_profile">Editar Perfil</a>
