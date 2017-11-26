@@ -1,4 +1,5 @@
 class CoachesController < ApplicationController
+  protect_from_forgery with: :null_session
   before_action :set_coach, only: [:show, :edit, :update, :destroy]
 
   # GET /coaches
@@ -25,7 +26,7 @@ class CoachesController < ApplicationController
   # POST /coaches.json
   def create
     @coach = Coach.new(coach_params)
-
+    @coach.password = params[:coach][:password]
     respond_to do |format|
       if @coach.save
         Blog.create(coach_id: @coach.id)
@@ -66,6 +67,13 @@ class CoachesController < ApplicationController
   end
 
   def login
+    @client = Coach.where(user: params[:user]).first
+    if @client.password == params[:password]
+      puts "ok"
+      render json: @client
+    else
+      render json: {}
+    end
   end
 
   def info

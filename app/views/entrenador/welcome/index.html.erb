@@ -1,0 +1,52 @@
+<div id="entrenador">
+	<div class="row" style="margin-top:2em;">
+		<div class="col-sm">
+			<div class="card custom">
+				<div class="card-img-top" >
+					<i class="ion-person-stalker"></i>
+				</div>
+				<div class="card-body">
+					<a href="/entrenador/clients?uid=<%=@coach.id%>">
+						<h3>Clientes</h3>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm">
+				<div class="card custom">
+					<div class="card-img-top" >
+						<i class="ion-star"></i>
+					</div>
+					<div class="card-body">
+						<a href="/entrenador/rating?uid=<%=@coach.id%>">
+							<h3>Valoracion</h3>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+					<div class="card custom">
+						<div class="card-img-top" >
+							<i class="ion-chatbubble-working"></i>
+						</div>
+						<div class="card-body">
+							<a href="/entrenador/comments?uid<%=@coach.id%>"><h3>
+									Comentarios
+								</h3></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm">
+						<div class="card custom">
+							<div class="card-img-top" >
+								<i class="ion-document-text"></i>
+							</div>
+							<div class="card-body">
+								<a href="/entrenador/blogs/<%=@blog.id%>?uid=<%=@coach.id%>">
+									<h3>Blog</h3>
+								</a>
+							</div>
+						</div>
+					</div>
+	</div>
+</div>

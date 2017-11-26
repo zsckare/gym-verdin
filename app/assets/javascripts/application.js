@@ -21,6 +21,40 @@
 
 function initVue(){
     
+    if (document.querySelector("#logincoach")) {
+        new Vue({
+            el: "#loginclient",
+            data:{
+                user: "",
+                password: ""
+            },
+            methods:{
+                ingresar: function(){
+                    console.log("intento login");
+                    var url = "/login-coach-back";
+                    var datos = {
+                        user: this.user,
+                        password: this.password
+                    };
+                    axios.post(url,datos).then(response=>{
+                        console.log(response.data);
+                        var d = response.data;
+                        var logged_user = {
+                            id: d.id,
+                            name: d.name,
+                            last_name: d.lastname,
+                            coach: d.coach_id
+                        };
+                        Lockr.set('user',logged_user);
+                        window.location = "/entrenador";
+                    },error=>{
+                        console.log(error)
+                    });
+
+                }
+            }
+        });
+    }
     if (document.querySelector("#loginclient")) {
         new Vue({
             el: "#loginclient",

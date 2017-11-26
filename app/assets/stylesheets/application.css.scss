@@ -14,6 +14,26 @@
  *= require_self
  */
 
+$primary: #015763;
  .center-text{
      text-align: center;
+ }
+ .custom{
+ 	text-align: center !important;
+ 	color: $primary;
+ 	.card-img-top{
+ 		i{
+ 			
+ 			font-size: 3em;
+ 		}
+ 	}
+ 	a{
+ 		color: $primary !important;
+ 		text-decoration: none;
+ 	}
+ }
+ .fab{
+ 	position: fixed;
+ 	bottom: 45px;
+right: 24px;
  }

@@ -19,6 +19,7 @@ gem 'mysql2'
 gem 'puma', '~> 3.0'
 # Use Stylus for stylesheets
 gem 'stylus'
+gem 'sass-rails', '~> 5.0'
 # Stylus dependence
 gem 'tilt'
 # Use Uglifier as compressor for JavaScript assets

@@ -37,5 +37,11 @@ Rails.application.routes.draw do
       resources :posts
     end
   end
+  namespace :entrenador do
+    root 'welcome#index'
+    resources :blogs do
+      resources :posts
+    end
+  end
 
 end
