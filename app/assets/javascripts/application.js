@@ -23,7 +23,7 @@ function initVue(){
     
     if (document.querySelector("#logincoach")) {
         new Vue({
-            el: "#loginclient",
+            el: "#logincoach",
             data:{
                 user: "",
                 password: ""
@@ -46,7 +46,7 @@ function initVue(){
                             coach: d.coach_id
                         };
                         Lockr.set('user',logged_user);
-                        window.location = "/entrenador";
+                        window.location = "/entrenador?uid="+logged_user.id;
                     },error=>{
                         console.log(error)
                     });
@@ -186,8 +186,9 @@ ready = function(){
     }
     
     $(".rating").rate(options);
-    
-        $('textarea#froala-editor').froalaEditor()
+    if (document.querySelector("#froala-edito")) {
+        $('textarea#froala-editor').froalaEditor();
+    }
       
 }
 
