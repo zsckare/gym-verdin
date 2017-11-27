@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     root 'welcome#index'
     resources :valorar
     resources :routines
+    resources :calculate
     resources :blogs do
       resources :posts
     end

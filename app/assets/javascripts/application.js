@@ -16,6 +16,9 @@
 //= require bootstrap
 //= require vue
 //= require axios
+//= require sweetalert2
+//= require sweet-alert2-rails
+//= require sweetalert
 //= require turbolinks
 //= require_tree .
 
@@ -80,7 +83,7 @@ function initVue(){
                             coach: d.coach_id
                         };
                         Lockr.set('user',logged_user);
-                        window.location = "/client";
+                        window.location = "/client?uid="+logged_user.id;
                     },error=>{
                         console.log(error)
                     });
@@ -140,6 +143,74 @@ function initVue(){
             }
         });
     }
+    if (document.querySelector("#calculadora")) {
+        new Vue({
+            el: "#calculadora",
+            data:{
+                peso: '',
+                sexo: '',
+                altura: '',
+                factor: '',
+                edad: '',
+                val_factor: 0,
+                show_result: false,
+                resultados: 0
+            },
+            methods:{
+               getData: function(){
+                
+                    var f = parseInt(this.factor);
+                    console.log(f);
+                    switch(f){
+                        case 1:
+                            this.val_factor = 1.2;
+                            break;
+                        case 2: 
+                            this.val_factor = 1.375;
+                            break;
+                        case 3:
+                            this.val_factor = 1.55;
+                            break;
+                        case 4: 
+                            this.val_factor = 1.725;
+                            break;
+                        case 5:
+                            this.val_factor = 1.9;
+                            break;
+                    }
+                     preloader = new $.materialPreloader({
+                            position: 'top',
+                            height: '5px',
+                            col_1: '#159756',
+                            col_2: '#da4733',
+                            col_3: '#3b78e7',
+                            col_4: '#fdba2c',
+                            fadeIn: 200,
+                            fadeOut: 200
+                        });
+                     if (empty(this.altura) || empty(this.sexo)|| empty(this.peso) || empty(this.factor) || empty(this.edad)) {
+                        sweetAlert("Por favor rellene todos los campos");
+                     }else{
+                         preloader.on();
+                     }
+ 
+                
+    // Mujeres [655 + (9.6 x Peso kg) ] + [ (1.8 x Altura cm) – (4.7 x Edad)] x Factor actividad  
+    // Hombres [66 + (13.7 x Peso kg) ] + [ (5 x Altura cm) – (6.8 x Edad)] x Factor actividad
+                    if (this.sexo==1) {
+                        console.log(this.val_factor);
+                        var resultado = ((655 + (9.6 * parseFloat(this.peso)) ) + (1.8 * parseFloat(this.altura) ) - (4.7 * parseInt(this.edad)) ) * this.val_factor;
+                        console.log(resultado);
+                        this.resultados = resultado;
+                        this.show_result = true;
+                        preloader.off();
+                    }
+
+               }
+            }
+        });
+    }
+
 
     if (document.querySelector("#nueva_rutina")) {
         new Vue({
@@ -171,7 +242,19 @@ function initVue(){
 }
 
 
-
+function empty(e) {
+    switch (e) {
+      case "":
+      case 0:
+      case "0":
+      case null:
+      case false:
+      case typeof this == "undefined":
+        return true;
+      default:
+        return false;
+    }
+  }
 ready = function(){
     initVue();
     var options = {

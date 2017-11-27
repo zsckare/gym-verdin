@@ -1,0 +1,94 @@
+<div id="calculadora" style="margin-top: 2em;">
+	<div class="row">
+	<div class="col-sm">
+		<h3>Calcula tus calorias</h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-3">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">
+					<strong>Notas</strong>
+				</h4>
+				<div class="card-text">
+					<p>Personas sedentarias(Poca actividad fisica)</p>
+					<p>Actividad Ligera(actividad fisica 1 o 3 veces por semana)</p>
+					<p>Actividad moderada(actividad fisica 3 a 5 veces por semana)</p>
+					<p>Actividad intensa(actividad fisica de 6 a 7 veces por semana)</p>
+					<p>Actividad extremandamente alta(atletas profesionales)</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-3">
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-sm">
+						<div class="form-group">
+							<label>Sexo</label>
+						<select class="custom-select" v-model="sexo">
+						  <option value="1">Femenino</option>
+						  <option value="2">Masculino</option>
+						</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						<div class="form-group">
+							<input type="text" name="peso" placeholder="Peso" class="form-control" v-model="peso">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						<div class="form-group">
+							<input type="text" name="altura" placeholder="Altura" class="form-control" v-model="altura">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						<div class="form-group">
+							<input type="number" name="edad" placeholder="Edad" class="form-control" v-model="edad">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						<div class="form-group">
+							<label>Factor de actividad fisica</label>
+						<select class="custom-select" v-model="factor">
+						  <option value="1">Sedentario</option>
+						  <option value="2">Ligero</option>
+						  <option value="3">Moderado</option>
+						  <option value="4">Intenso</option>
+						  <option value="5">Alto rendimiento</option>
+						  
+						</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm">
+						<button class="btn btn-raised btn-info" @click="getData()">Calcular</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="col-sm-3" v-if="show_result">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-text">Calorias requeridas</h5>
+				<div class="card-text">
+					{{resultados}}
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+</div>
