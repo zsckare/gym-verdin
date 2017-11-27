@@ -205,6 +205,14 @@ function initVue(){
                         this.show_result = true;
                         preloader.off();
                     }
+                    if (this.sexo==2) {
+                        console.log(this.val_factor);
+                        var resultado = ((666 + (13.7 * parseFloat(this.peso)) ) + (5 * parseFloat(this.altura) ) - (6.8 * parseInt(this.edad)) ) * this.val_factor;
+                        console.log(resultado);
+                        this.resultados = resultado;
+                        this.show_result = true;
+                        preloader.off();
+                    }
 
                }
             }
