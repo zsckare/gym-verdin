@@ -28,15 +28,13 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     @client.password = params[:client][:password]
-    respond_to do |format|
+    
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
-        format.json { render :show, status: :created, location: @client }
+         redirect_to root_path
       else
-        format.html { render :new }
-        format.json { render json: @client.errors, status: :unprocessable_entity }
+        render :new 
       end
-    end
+    
   end
 
   # PATCH/PUT /clients/1

@@ -1,7 +1,10 @@
 <div id="client">
 	<div class="row" style="margin-top:2em;">
 		<div class="col-sm">
-			<div class="card">
+			<div class="card custom">
+				<div class="card-img-top" >
+					<i class="ion-person"></i>
+				</div>
 				<div class="card-body">
 					<a href="/client/valorar?uid=<%=@client.id%>">
 						<h3>Valora al entrenador</h3>
@@ -10,7 +13,10 @@
 			</div>
 		</div>
 		<div class="col-sm">
-				<div class="card">
+				<div class="card custom">
+				<div class="card-img-top" >
+					<i class="ion-calendar"></i>
+				</div>
 					<div class="card-body">
 						<a href="/client/routines?uid=<%=@client.id%>">
 							<h3>Crea tus rutinas</h3>
@@ -19,7 +25,10 @@
 				</div>
 			</div>
 			<div class="col-sm">
-					<div class="card">
+					<div class="card custom">
+				<div class="card-img-top" >
+					<i class="ion-document-text"></i>
+				</div>
 						<div class="card-body">
 							<a href="/client/blogs/<%=@blog.id%>"><h3>
 									Checa el blog del entrenador
@@ -28,7 +37,10 @@
 					</div>
 				</div>
 				<div class="col-sm">
-						<div class="card">
+						<div class="card custom">
+				<div class="card-img-top" >
+					<i class="ion-calculator"></i>
+				</div>
 							<div class="card-body">
 								<a href="/client/calculate?uid=<%=@client.id%>">
 									<h3>Calcula tus calorias</h3>
