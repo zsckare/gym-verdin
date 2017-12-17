@@ -1,0 +1,59 @@
+<%= form_for([:admin,coach]) do |f| %>
+  <% if coach.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(coach.errors.count, "error") %> prohibited this coach from being saved:</h2>
+
+      <ul>
+      <% coach.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm">
+      <div class="form-group">
+        <%= f.label :name, "Nombre" %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+        <%= f.label :discipline_id, "Disciplina" %>
+        <select name="coach[discipline_id]" class="custom-select">
+            <% Discipline.all.each do |c|%>
+                <option value="<%=c.id%>"><%=c.name%></option>
+            <%end%>
+        </select>  
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+        <%= f.label :user, "Usuario" %>
+        <%= f.text_field :user, class: 'form-control' %>
+    </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+    <%= f.label :password, "Contraseña" %>
+    <%= f.password_field :password, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit @text, class: 'btn btn-raised btn-primary' %>
+  </div>
+<% end %>

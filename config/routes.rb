@@ -1,6 +1,10 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'welcome/index'
+  end
+
   root 'welcome#index'
   
   get 'registro', to: 'clients#new'
@@ -44,6 +48,15 @@ Rails.application.routes.draw do
       resources :posts
     end
     resources :posts
+  end
+
+  namespace :admin do
+    root 'welcome#index'
+    resources :clients
+    resources :coaches
+    resources :disciplines
+    resources :exercises
+    resources :categories
   end
 
 end

@@ -1,4 +1,4 @@
-class ClientsController < ApplicationController
+class Admin::ClientsController < Admin::ApplicationController
   protect_from_forgery with: :null_session
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 

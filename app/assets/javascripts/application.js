@@ -263,24 +263,27 @@ function empty(e) {
         return false;
     }
   }
+  function intiStarts(){
+    $(".my-rating").starRating({
+          useFullStars:true,
+          disableAfterRate:false,
+        starSize: 25,
+        callback: function(currentRating, $el){
+            console.log(currentRating);
+            $("#rating").val(currentRating);
+            intiStarts();
+        }
+    });
+  }
 ready = function(){
     initVue();
-    var options = {
-        max_value: 5,
-        step_size: 1,
-        initial_value: 3,
-        selected_symbol_type: 'fontawesome_star', // Must be a key from symbols
-        cursor: 'default',
-        readonly: false,
-        change_once: false, // Determines if the rating can only be set once
-        
-    }
-    
-    $(".rating").rate(options);
+    intiStarts();
     if (document.querySelector("#froala-edito")) {
         $('textarea#froala-editor').froalaEditor();
     }
       
 }
+
+
 
 $(document).on('turbolinks:load',ready);
