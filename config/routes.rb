@@ -16,11 +16,11 @@ Rails.application.routes.draw do
   resources :assessments
   resources :posts
   resources :blogs
-  resources :clients
-  resources :coaches
-  resources :disciplines
-  resources :exercises
-  resources :categories
+  # resources :clients
+  # resources :coaches
+  # resources :disciplines
+  # resources :exercises
+  # resources :categories
   
   
 

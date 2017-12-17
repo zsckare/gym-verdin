@@ -58,3 +58,8 @@ Exercise::create(name: "ABS EN V", category_id: 4)
 Exercise::create(name: "ABS BICI", category_id: 4)
 Exercise::create(name: "ABS PIERNA", category_id: 4)
 Exercise::create(name: "SUPERMAN", category_id: 4)
+
+Discipline::create(name: 'PESAS')
+Discipline::create(name: 'CROSSFIT')
+Discipline::create(name: 'BOOTCAMP')
+Discipline::create(name: 'SPINNING')
