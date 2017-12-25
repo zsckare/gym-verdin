@@ -19,9 +19,20 @@
 //= require sweetalert2
 //= require sweet-alert2-rails
 //= require sweetalert
+//= require snackbar
 //= require turbolinks
 //= require_tree .
 
+preloader = new $.materialPreloader({
+    position: 'top',
+    height: '5px',
+    col_1: '#159756',
+    col_2: '#da4733',
+    col_3: '#3b78e7',
+    col_4: '#fdba2c',
+    fadeIn: 200,
+    fadeOut: 200
+});
 function initVue(){
     
     if (document.querySelector("#logincoach")) {
@@ -39,6 +50,7 @@ function initVue(){
                         user: this.user,
                         password: this.password
                     };
+                    preloader.on();
                     axios.post(url,datos).then(response=>{
                         console.log(response.data);
                         var d = response.data;
@@ -49,8 +61,10 @@ function initVue(){
                             coach: d.coach_id
                         };
                         Lockr.set('user',logged_user);
+                        preloader.off();
                         window.location = "/entrenador?uid="+logged_user.id;
                     },error=>{
+                        preloader.off();
                         console.log(error)
                     });
 
@@ -73,6 +87,7 @@ function initVue(){
                         user: this.user,
                         password: this.password
                     };
+                    preloader.on();
                     axios.post(url,datos).then(response=>{
                         console.log(response.data);
                         var d = response.data;
@@ -83,8 +98,10 @@ function initVue(){
                             coach: d.coach_id
                         };
                         Lockr.set('user',logged_user);
+                        preloader.off();
                         window.location = "/client?uid="+logged_user.id;
                     },error=>{
+                        preloader.off();
                         console.log(error)
                     });
 
@@ -115,6 +132,23 @@ function initVue(){
                     console.log(this.comment);
                     this.coach = $("#coach_id").val();
                     console.log($("#coach_id").val());
+                    this.valoracion = $("#rating").val();
+                    url = "/client/comments";
+                    axios.post(url,{
+                        coach_id: this.coach,
+                        puntos: this.valoracion,
+                        uid:""+this.user.id,
+                        comment:{
+                            value: this.comment
+                        }
+                    }).then(response=>{
+                        console.log(response.data);
+                        $.snackbar({content: "Se han enviado tus comentarios"});
+                        this.comment = '';
+                    }).catch(error=>{
+                        $.snackbar({content: "Ha ocurido un error, intente de nuevo mas tarde"});
+                        console.log(error);
+                    });
                 }
             }
         });
@@ -136,7 +170,7 @@ function initVue(){
                     $("#nombre").html(fullname);
                     var link = "/client?uid="+this.user.id;
                     $("#home_link").attr("href", link);
-                    var link2 = "/client?uid="+this.user.id+"/edit/";
+                    var link2 = "/client/edit?uid="+this.user.id;
                     $("#edit_profile").attr("href", link2);
                     
                 }

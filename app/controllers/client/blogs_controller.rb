@@ -1,4 +1,5 @@
 class Client::BlogsController < Client::ApplicationController
+    layout 'client'
     def index
         @client = Client.find(params[:uid])
         @coach = Coach.find(@client.coach_id)

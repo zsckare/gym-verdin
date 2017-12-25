@@ -20,7 +20,7 @@ gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use Stylus for stylesheets
-gem 'stylus'
+# gem 'stylus'
 gem 'sass-rails', '~> 5.0'
 # Stylus dependence
 gem 'tilt'
