@@ -1,6 +1,10 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  namespace :entrenador do
+    get 'comments/index'
+  end
+
   resources :comments
   namespace :admin do
     get 'welcome/index'
@@ -47,6 +51,7 @@ Rails.application.routes.draw do
   namespace :entrenador do
     root 'welcome#index'
     resources :comments
+    get 'commentarios', to: "comments#backend"
     resources :blogs do
       resources :posts
     end

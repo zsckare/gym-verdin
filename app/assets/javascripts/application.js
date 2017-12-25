@@ -153,6 +153,61 @@ function initVue(){
             }
         });
     }
+    if (document.querySelector("#come")){
+        new Vue({
+            el: "#come",
+            data:{
+                datos:[],
+                user: {},
+                valoracion:0,
+                valoraciones:[]
+            },
+            created: function(){
+                console.log("coasass");
+                this.getData();
+            },
+            methods:{
+                getData: function(){
+                    this.user = Lockr.get('user');
+                    var url = "/entrenador/commentarios?uid="+this.user.id;
+                    axios.get(url).then(response=>{
+                        debugea(response.data);
+                        this.datos = response.data;
+                        this.promediarValoracion(this.datos.valoracion);
+
+                    }).catch(error=>{
+                        console.log(error);
+                    })
+                    ;
+                },
+                promediarValoracion(valoraciones){
+                    console.log("Intento promediar");
+                    debugea(valoraciones.length);
+                    if(valoraciones.length ==0){
+                        this.valoracion = 0;
+                    }else{
+                        var total = valoraciones.length;
+                        var sumatoria = 0;
+                        valoraciones.forEach(function(element) {
+                           sumatoria = sumatoria+ element.points;
+                        });
+                        this.valoracion = (sumatoria/total);
+                        $(".mrating").starRating({
+                            useFullStars:true,
+                            initialRating: this.valoracion,
+                            readOnly: true,
+                          starSize: 25
+                      });
+                    }
+
+                },
+                localTime: function (date) {
+                    return moment(date , 'YYYY-MM-DD', true).format('D MMM YYYY');
+                 }
+            }
+        });
+
+    }
     if (document.querySelector("#navigation")) {
         new Vue({
             el: "#navigation",
@@ -284,6 +339,9 @@ function initVue(){
 }
 
 
+function debugea(data){
+    console.log(JSON.stringify(data))
+}
 function empty(e) {
     switch (e) {
       case "":

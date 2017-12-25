@@ -3,7 +3,7 @@ class Client::CommentsController < Client::ApplicationController
     def create
       @comment = Comment.new
       @comment.coach_id = params[:coach_id]
-      @comment.value = params[:value]
+      @comment.value = params[:comment][:value]
       uid = "#{params[:uid]}"
       clie = Client.find(uid)
       @ass = Assessment.where(client_id: clie.id)

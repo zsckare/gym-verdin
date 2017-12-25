@@ -1,0 +1,2 @@
+module Entrenador::CommentsHelper
+end

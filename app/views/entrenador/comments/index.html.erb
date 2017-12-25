@@ -1,0 +1,48 @@
+<div id="come">
+    <div class="row" style="margin-top:3em;">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm"><div class="col-sm"><h4>Valoracion general</h4></div></div>
+                        </div>
+                        <div class="row">
+                            <div class="mrating"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Comentario</th>
+                                        <th>
+
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="comment in datos.comments">
+                                        <td>
+                                            {{comment.value}}
+                                        </td>
+                                        <td>
+                                            {{comment.created_at || localTime}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
