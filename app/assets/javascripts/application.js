@@ -316,12 +316,109 @@ function initVue(){
                 ejS:[],
                 ejI:[],
                 ejA:[],
-                ejC:[]
+                ejC:[],
+                superiorCheked:[],
+                inferiorCheked:[],
+                cardioCheked:[],
+                abdomenCheked:[],
+                tiempo: {
+                    minuto: 0,
+                    segundo: 60
+                },
+                segundo:60,
+                encurso: true,
+                tiempo_corriendo:null,
+                currentex: ''
             },
             created: function(){
                 this.setExercises();
+                
             },
             methods: {
+                startRoutine: function(){
+                    var favorite = [];
+                    debugea($("input[name='superior']:checked").length);
+                    if($("input[name='superior']:checked").length==3){
+                        if($("input[name='inferior']:checked").length==3){
+                            if($("input[name='abdomen']:checked").length==3){
+                                if($("input[name='cardio']:checked").length==3){
+                                    $.each($("input:checked"), function(){            
+                                        favorite.push($(this).val());
+                                    });
+                                    this.superiorCheked = favorite;
+                                    this.hideExerciesCard();
+                                }else{
+                                    $.snackbar({content: "Necesitas seleccionar 3 ejercicios de cada categoria"});    
+                                }
+                            }else{
+                                $.snackbar({content: "Necesitas seleccionar 3 ejercicios de cada categoria"});    
+                            }
+                        }else{
+                            $.snackbar({content: "Necesitas seleccionar 3 ejercicios de cada categoria"});
+                        }
+                    }else{
+                        $.snackbar({content: "Necesitas seleccionar 3 ejercicios de cada categoria"});
+                    }
+                    
+                    
+                    var cardio = [];
+                    var abdomen= [];
+                    var inferior=[];
+
+                    
+                    // $.each($("input[name='inferior']:checked"), function(){            
+                    //     inferior.push($(this).val());
+                    // });
+                    // $.each($("input[name='cardio']:checked"), function(){            
+                    //     cardio.push($(this).val());
+                    // });
+                    // $.each($("input[name='abdomen']:checked"), function(){            
+                    //     abdomen.push($(this).val());
+                    // });
+                    
+                    // this.abdomenCheked = abdomen;
+                    // this.cardioCheked=cardio;
+                    // this.inferiorCheked = inferior;
+                    // this.hideExerciesCard();
+
+                },
+                comenzar: function(){
+                    debugea("comenza ejerciico");
+                    var segundos = 60;
+                    var index = 0;
+                    var vuelta = 1;
+                    debugea(this.superiorCheked);
+                    this.currentex = this.superiorCheked[index];
+                    this.tiempo_corriendo = setInterval(function(){
+                        // Segundos
+                        
+                        debugea(this.currentex);
+
+                        debugea("comienza interval");
+                        
+                        console.log(segundos);
+                        segundos = segundos-1;
+                        this.segundo= segundos;
+                        debugea(this.segundo);
+                        $("#crono").html(segundos);
+                        if(this.segundo == 0)
+                        {
+                            segundos=60;
+                            $("#crono").html(60);
+                            debugea("Cambiar ejercicio");
+                            index++;
+                        }     
+                    }, 1000);
+                },
+                stopear: function(){
+                    clearInterval(this.tiempo_corriendo);
+                    $("#crono").html(60);
+                },
+                hideExerciesCard: function(){
+                    $("#primera").fadeOut("slow");
+                    $("#segunda").fadeIn("slow");
+                    // this.comenzar();
+                },
                 setExercises: function(){
                     var sup = $("#superior").data("options");
                     this.ejS = sup;
@@ -331,13 +428,13 @@ function initVue(){
                     this.ejA = ab;
                     this.ejC = car;
                     this.ejI = inf;
-                    
                 }
+                
+
             }
         });
     }
 }
-
 
 function debugea(data){
     console.log(JSON.stringify(data))

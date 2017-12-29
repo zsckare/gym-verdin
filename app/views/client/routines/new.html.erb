@@ -1,7 +1,7 @@
 <div id="nueva_rutina">
     <div class="row" style="margin-top:3em;">
         <div class="col-sm">
-            <div class="card">
+            <div class="card" id="primera">
                 <div class="card-header">
                     <h3>Crea tu rutina</h3>
                 </div>
@@ -19,7 +19,7 @@
                                                 
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                      <input class="form-check-input" type="checkbox" value="">
+                                                      <input class="form-check-input" type="checkbox" :value="item.name" name="superior">
                                                       {{item.name}}
                                                     </label>
                                                   </div>
@@ -35,7 +35,7 @@
                                 <div class="col-sm" v-for="item in ejI">
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" value="">
+                                            <input class="form-check-input" type="checkbox" :value="item.name" name="inferior">
                                             {{item.name}}
                                         </label>
                                     </div>
@@ -53,7 +53,7 @@
                                 <div class="col-sm" v-for="item in ejA">
                                     <div class="form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" value="">
+                                            <input class="form-check-input" type="checkbox" :value="item.name" name="abdomen">
                                             {{item.name}}
                                         </label>
                                     </div>
@@ -71,16 +71,80 @@
                                     <div class="col-sm" v-for="item in ejC">
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" value="">
+                                                <input class="form-check-input" type="checkbox" :value="item.name" name="cardio">
                                                 {{item.name}}
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-sm">
+                                    <button @click="startRoutine()" class="btn btn-raised"> Empezar rutina</button>
+                                </div>
+                            </div>
                     </div>
+
+                   
                 </div>
                 
+            </div>
+
+
+            <!-- contador creo -->
+            <div class="row" id="segunda" style="display:none">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <h5>Restante</h5>
+                                    <h2 id='crono'>{{segundo}}</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm">
+                                    
+                                    <button class="btn" @click="comenzar()" v-if="encurso">Empezar</button>
+                                    <button class="btn" @click="stopear()" v-if="!encurso ">Detener</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Ejercicio en curso</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-3" v-for="item in superiorCheked">
+                                            <span style="" :id="item">
+                                                {{item}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:1em;">
+                        <div class="col-sm">
+                            <div class="card">
+                                <div class="card-body">
+                                        <h4 class="current-ex">
+                                                {{currentex}}
+                                        </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -20,6 +20,11 @@ $primary: #015763;
  .center-text{
      text-align: center;
  }
+
+ .current-ex{
+  border: 1px solid;
+   padding:.3rem;
+ }
  .custom{
  	text-align: center !important;
  	color: $primary;
