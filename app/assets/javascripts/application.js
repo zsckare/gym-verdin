@@ -384,22 +384,25 @@ function initVue(){
                 },
                 comenzar: function(){
                     debugea("comenza ejerciico");
+                    var vuelta = 1;
+                    this.encurso = false;
                     var segundos = 60;
                     var index = 0;
                     var vuelta = 1;
-                    debugea(this.superiorCheked);
-                    this.currentex = this.superiorCheked[index];
+                    var ejercicios = this.superiorCheked;
+                    debugea(ejercicios);
+                    this.currentex = ejercicios[index];
                     this.tiempo_corriendo = setInterval(function(){
                         // Segundos
                         
-                        debugea(this.currentex);
+                        // debugea(currentex);
 
-                        debugea("comienza interval");
+                        // debugea("comienza interval");
                         
-                        console.log(segundos);
+                        // console.log(segundos);
                         segundos = segundos-1;
                         this.segundo= segundos;
-                        debugea(this.segundo);
+                        // debugea(this.segundo);
                         $("#crono").html(segundos);
                         if(this.segundo == 0)
                         {
@@ -407,8 +410,22 @@ function initVue(){
                             $("#crono").html(60);
                             debugea("Cambiar ejercicio");
                             index++;
+                            this.currentex = ejercicios[index];
+                            // console.log(this.currentex);
+                            $("#current-ex").html(ejercicios[index]);
+                            console.log(ejercicios[index]);
+                            if(index==ejercicios.length){
+                                index = 0;
+                                this.currentex = ejercicios[index];
+                                if(vuelta<4){
+                                    vuelta++;
+                                }else{
+                                    this.stopear();
+                                }
+                            }
                         }     
                     }, 1000);
+                   
                 },
                 stopear: function(){
                     clearInterval(this.tiempo_corriendo);
