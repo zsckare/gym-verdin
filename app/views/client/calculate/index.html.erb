@@ -22,73 +22,123 @@
 		</div>
 	</div>
 	<div class="col-sm-3">
-		<div class="card">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-sm">
-						<div class="form-group">
-							<label>Sexo</label>
-						<select class="custom-select" v-model="sexo">
-						  <option value="1">Femenino</option>
-						  <option value="2">Masculino</option>
-						</select>
+		<div class="row">
+			<div class="col-sm">
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-sm">
+								<div class="form-group">
+									<label>Sexo</label>
+								<select class="custom-select" v-model="sexo">
+								  <option value="1">Femenino</option>
+								  <option value="2">Masculino</option>
+								</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<div class="form-group">
+									<input type="text" name="peso" placeholder="Peso" class="form-control" v-model="peso">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<div class="form-group">
+									<input type="text" name="altura" placeholder="Altura" class="form-control" v-model="altura">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<div class="form-group">
+									<input type="number" name="edad" placeholder="Edad" class="form-control" v-model="edad">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<div class="form-group">
+									<label>Factor de actividad fisica</label>
+								<select class="custom-select" v-model="factor">
+								  <option value="1">Sedentario</option>
+								  <option value="2">Ligero</option>
+								  <option value="3">Moderado</option>
+								  <option value="4">Intenso</option>
+								  <option value="5">Alto rendimiento</option>
+								  
+								</select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<button class="btn btn-raised btn-info dark" @click="getData()">Calcular</button>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-sm">
-						<div class="form-group">
-							<input type="text" name="peso" placeholder="Peso" class="form-control" v-model="peso">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm" v-if="show_result">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-text">Calorias requeridas</h5>
+						<div class="card-text">
+							{{resultados}}
 						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm">
-						<div class="form-group">
-							<input type="text" name="altura" placeholder="Altura" class="form-control" v-model="altura">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm">
-						<div class="form-group">
-							<input type="number" name="edad" placeholder="Edad" class="form-control" v-model="edad">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm">
-						<div class="form-group">
-							<label>Factor de actividad fisica</label>
-						<select class="custom-select" v-model="factor">
-						  <option value="1">Sedentario</option>
-						  <option value="2">Ligero</option>
-						  <option value="3">Moderado</option>
-						  <option value="4">Intenso</option>
-						  <option value="5">Alto rendimiento</option>
-						  
-						</select>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm">
-						<button class="btn btn-raised btn-info" @click="getData()">Calcular</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
 	</div>
-	<div class="col-sm-3" v-if="show_result">
+	<div class="col-sm">
 		<div class="card">
 			<div class="card-body">
-				<h5 class="card-text">Calorias requeridas</h5>
-				<div class="card-text">
-					{{resultados}}
+				<div class="row">
+					<div class="col-sm">
+							<table class="table" id="dieta">
+									<thead>
+										<tr>
+											<th>Alimento(100g)</th>
+											<th>Proteinas</th>
+											<th>Calorias</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="(food,index) in foods" :id="index">
+											<td> <div class="form-check">
+												<label class="form-check-label">
+													<input class="form-check-input" type="checkbox" :value="food.calories" name="food_check" @click="getCalories()">
+													{{food.name}}
+												</label>
+											</div></td>
+											<td>
+												{{food.proteins}}
+											</td>
+											<td>
+												{{food.calories}}
+											</td>
+										</tr>
+									</tbody>
+								</table>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						Calorias: <span id="cal"></span>
+					</div>
+					<div class="col-sm">
+						<button class="btn btn-raised dark" @click="setDiet()">Crear Dieta</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>	
+	</div>
 </div>
 </div>
+<div id="food" data-options="<%=@food.to_json%>"></div>

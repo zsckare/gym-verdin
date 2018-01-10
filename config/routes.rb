@@ -1,6 +1,8 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  resources :notes
+  resources :foods
   namespace :entrenador do
     get 'comments/index'
   end
@@ -47,6 +49,7 @@ Rails.application.routes.draw do
     resources :blogs do
       resources :posts
     end
+    resources :notes
   end
   namespace :entrenador do
     root 'welcome#index'
@@ -56,6 +59,7 @@ Rails.application.routes.draw do
       resources :posts
     end
     resources :posts
+    resources :clients
   end
 
   namespace :admin do

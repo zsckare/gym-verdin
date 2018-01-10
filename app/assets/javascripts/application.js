@@ -243,7 +243,12 @@ function initVue(){
                 edad: '',
                 val_factor: 0,
                 show_result: false,
-                resultados: 0
+                resultados: 0,
+                foods:[],
+                calories: 0.0
+            },
+            created: function(){
+                this.getFood();
             },
             methods:{
                getData: function(){
@@ -284,8 +289,8 @@ function initVue(){
                      }
  
                 
-    // Mujeres [655 + (9.6 x Peso kg) ] + [ (1.8 x Altura cm) – (4.7 x Edad)] x Factor actividad  
-    // Hombres [66 + (13.7 x Peso kg) ] + [ (5 x Altura cm) – (6.8 x Edad)] x Factor actividad
+                // Mujeres [655 + (9.6 x Peso kg) ] + [ (1.8 x Altura cm) – (4.7 x Edad)] x Factor actividad  
+                // Hombres [66 + (13.7 x Peso kg) ] + [ (5 x Altura cm) – (6.8 x Edad)] x Factor actividad
                     if (this.sexo==1) {
                         console.log(this.val_factor);
                         var resultado = ((655 + (9.6 * parseFloat(this.peso)) ) + (1.8 * parseFloat(this.altura) ) - (4.7 * parseInt(this.edad)) ) * this.val_factor;
@@ -303,6 +308,35 @@ function initVue(){
                         preloader.off();
                     }
 
+               },
+               getFood: function(){
+                var alimentos = $("#food").data("options");
+                this.foods = alimentos;
+                debugea(this.foods);
+               },
+               getCalories: function(){
+                   var favorite = 0.0;
+                $.each($("input:checked"), function(){            
+                    favorite = favorite +  parseFloat($(this).val());
+                });
+                debugea(favorite);
+                $("#cal").html(favorite);
+                if(favorite>this.resultados){
+                    alert("Exediste las calorias");
+                }
+               },
+               setDiet: function(){
+                   var i = 0;
+                $.each($("input"), function(){            
+                    if ($(this).is(":checked")){
+
+                    }else{
+                        $("#"+i).addClass("hide");
+                        
+                    }
+                    i++;
+                    
+                });
                }
             }
         });
@@ -365,21 +399,7 @@ function initVue(){
                     var abdomen= [];
                     var inferior=[];
 
-                    
-                    // $.each($("input[name='inferior']:checked"), function(){            
-                    //     inferior.push($(this).val());
-                    // });
-                    // $.each($("input[name='cardio']:checked"), function(){            
-                    //     cardio.push($(this).val());
-                    // });
-                    // $.each($("input[name='abdomen']:checked"), function(){            
-                    //     abdomen.push($(this).val());
-                    // });
-                    
-                    // this.abdomenCheked = abdomen;
-                    // this.cardioCheked=cardio;
-                    // this.inferiorCheked = inferior;
-                    // this.hideExerciesCard();
+                  
 
                 },
                 comenzar: function(){
@@ -393,13 +413,7 @@ function initVue(){
                     debugea(ejercicios);
                     this.currentex = ejercicios[index];
                     this.tiempo_corriendo = setInterval(function(){
-                        // Segundos
-                        
-                        // debugea(currentex);
-
-                        // debugea("comienza interval");
-                        
-                        // console.log(segundos);
+                     
                         segundos = segundos-1;
                         this.segundo= segundos;
                         // debugea(this.segundo);
@@ -420,12 +434,28 @@ function initVue(){
                                 if(vuelta<4){
                                     vuelta++;
                                 }else{
-                                    this.stopear();
+                                    stopear();
                                 }
                             }
                         }     
                     }, 1000);
                    
+                },
+                sendNote: function(){
+                    url = "/client/notes";
+                    var client = $("#client_id").val();
+                    var details = $("#details").val();
+                    var ex = this.currentex;
+                    console.log("==================");
+                    debugea(client);
+                    debugea(ex);
+                    axios.post(url,{
+                        uid: client,
+                        details: details,
+                        ex: ex
+                    }).then(response=>{
+                        $.snackbar({content: "Se han enviado tus comentarios"});
+                    });
                 },
                 stopear: function(){
                     clearInterval(this.tiempo_corriendo);
@@ -484,7 +514,7 @@ function empty(e) {
 ready = function(){
     initVue();
     intiStarts();
-    if (document.querySelector("#froala-edito")) {
+    if (document.querySelector("#froala-editor")) {
         $('textarea#froala-editor').froalaEditor();
     }
       

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171225211731) do
+ActiveRecord::Schema.define(version: 20180108182943) do
 
   create_table "assessments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "points"
@@ -79,7 +79,27 @@ ActiveRecord::Schema.define(version: 20171225211731) do
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "description"
     t.index ["category_id"], name: "index_exercises_on_category_id", using: :btree
+  end
+
+  create_table "foods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.float    "proteins",   limit: 24
+    t.float    "calories",   limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "client_id"
+    t.integer  "coach_id"
+    t.string   "details"
+    t.string   "exercise"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_notes_on_client_id", using: :btree
+    t.index ["coach_id"], name: "index_notes_on_coach_id", using: :btree
   end
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -133,6 +153,8 @@ ActiveRecord::Schema.define(version: 20171225211731) do
   add_foreign_key "coaches", "disciplines"
   add_foreign_key "comments", "coaches"
   add_foreign_key "exercises", "categories"
+  add_foreign_key "notes", "clients"
+  add_foreign_key "notes", "coaches"
   add_foreign_key "posts", "blogs"
   add_foreign_key "routines", "clients"
 end

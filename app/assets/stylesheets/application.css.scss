@@ -16,7 +16,18 @@
  *= require sweetalert
  */
 
-$primary: #015763;
+$primary: #4CAF50;
+$dark: #388E3C;
+$accent:#CDDC39;
+.primary{
+  background-color: $primary !important;
+}
+.dark{
+  background-color: $dark !important;
+}
+.primary_text{
+  color: $primary !important;
+}
  .center-text{
      text-align: center;
  }
@@ -27,7 +38,7 @@ $primary: #015763;
  }
  .custom{
  	text-align: center !important;
- 	color: $primary;
+ 	color: $dark;
  	.card-img-top{
  		i{
  			
@@ -38,6 +49,9 @@ $primary: #015763;
  		color: $primary !important;
  		text-decoration: none;
  	}
+ }
+ .hide{
+   display: none !important;
  }
  .fab{
  	position: fixed;

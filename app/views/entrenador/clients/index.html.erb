@@ -1,0 +1,26 @@
+<div class="row" style="margin-top:2em;">
+    <div class="col-sm">
+        <div class="card">
+           
+            <div class="card-body">
+                    <h5 class="card-title">Lista de clientes</h5>
+                <div class="row">
+                    <div class="col-sm">
+                        <table class="table">
+                            <%@clients.each do |client|%>
+                            <tr>
+                                <td>
+                                    <%=client.name %> <%= client.lastname%>
+                                </td>
+                                <td>
+                                    <a href="/entrenador/clients/<%=client.id%>?uid=<%=@coach.id%>">Ver detalles</a>
+                                </td>
+                            </tr>
+                            <%end%>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,7 @@ class Client::RoutinesController < Client::ApplicationController
         @posts = @blog.posts.order("created_at DESC")
     end
     def new
+        @client = Client.find(params[:uid])
         @superior = Exercise.where(category_id: 1)
         @inferior = Exercise.where(category_id: 2)
         @abdomen = Exercise.where(category_id: 4)

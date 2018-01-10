@@ -17,9 +17,10 @@ class Entrenador::BlogsController < Entrenador::BaseController
 		puts "----------"
 		puts params[:bid]
 		@post.blog_id = params[:bid]
+		uri = "/entrenador/blogs/#{params[:bid]}?uid=#{params[:uid]}"
 	    respond_to do |format|
 	      if @post.save
-	        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+	        format.html { redirect_to uri , notice: 'Post was successfully created.' }
 	        format.json { render :show, status: :created, location: @post }
 	      else
 	        format.html { render :new }
