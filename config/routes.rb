@@ -1,6 +1,8 @@
 require 'api_constraints'
 
 Rails.application.routes.draw do
+  
+
   resources :notes
   resources :foods
   namespace :entrenador do
@@ -50,6 +52,8 @@ Rails.application.routes.draw do
       resources :posts
     end
     resources :notes
+    get 'profile/index'
+    put 'profile/update'
   end
   namespace :entrenador do
     root 'welcome#index'

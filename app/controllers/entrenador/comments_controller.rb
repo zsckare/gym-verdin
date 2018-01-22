@@ -1,4 +1,4 @@
-class Entrenador::CommentsController < Entrenador::ApplicationController
+class Entrenador::CommentsController < Entrenador::BaseController
   layout 'coach'
   def index
     @coach = Coach.find(params[:uid])

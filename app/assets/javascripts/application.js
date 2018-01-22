@@ -225,10 +225,26 @@ function initVue(){
                     $("#nombre").html(fullname);
                     var link = "/client?uid="+this.user.id;
                     $("#home_link").attr("href", link);
-                    var link2 = "/client/edit?uid="+this.user.id;
+                    var link2 = "/client/profile/index?uid="+this.user.id;
                     $("#edit_profile").attr("href", link2);
                     
                 }
+            }
+        });
+    }
+    if(document.querySelector("#clientprofile")){
+        new Vue({
+            el: "#clientprofile",
+            data:{
+                user:{}
+            },
+            created: function(){
+                this.setUserData();
+            },
+            methods:{
+              editUser: function(){
+                  
+              }
             }
         });
     }

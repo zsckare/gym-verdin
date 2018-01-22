@@ -5,11 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "--->Creando Categorias de ejercicios"
 Category::create(id: 1, name: "PARTE SUPERIOR")
 Category::create(id: 2, name: "PARTE INFERIOR")
 Category::create(id: 3, name: "CARDIO")
 Category::create(id: 4, name: "ABDOMEN")
 
+puts "--->Creando ejercicios"
 Exercise::create(name: "LAGARTIJAS", category_id: 1)
 Exercise::create(name: "CURL DE BICEP", category_id: 1)
 Exercise::create(name: "CURL MARTILLO", category_id: 1)
@@ -64,6 +66,7 @@ Discipline::create(name: 'CROSSFIT')
 Discipline::create(name: 'BOOTCAMP')
 Discipline::create(name: 'SPINNING')
 
+puts "--->Creando lista de alimentos precargados"
 Food::create([{name: "Aceitunas", proteins: 1.56, calories: 150.7 },
 {name: "Acelgas", proteins: 2.92, calories: 26.58},
 {name: "Agua de coco", proteins: 0.31, calories:20.65 },
@@ -172,8 +175,8 @@ Food::create([{name: "Aceitunas", proteins: 1.56, calories: 150.7 },
 {name: "Jaiba", proteins: 19.10, calories: 79.73},
 {name: "Jaleas", proteins: 0.14, calories: 280},
 {name: "Jamon ahumado", proteins: 17.50, calories: 430},
-{name: "jicama", proteins: 0, calories: 0},
-{name: "fruta mezclada", proteins: 0.35, calories: 59.74},
+{name: "Jicama", proteins: 0, calories: 0},
+{name: "Fruta mezclada", proteins: 0.35, calories: 59.74},
 {name: "Tomate", proteins: 1, calories: 10.80},
 {name: "Naranja", proteins: 1.2, calories: 75},
 {name: "Vegetales", proteins: 1.6, calories: 29},
@@ -243,10 +246,10 @@ Food::create([{name: "Aceitunas", proteins: 1.56, calories: 150.7 },
 {name: "Queso panela", proteins: 25.50, calories: 291},
 {name: "Queso ranchero", proteins: 25.70, calories: 330.23},
 {name: "Queso de tuna", proteins: 20.90, calories: 214},
-{name: "rabano", proteins: 24.40, calories: 273.10},
+{name: "Rabano", proteins: 24.40, calories: 273.10},
 {name: "Requeson", proteins: 1.25, calories: 321.80},
 {name: "Riñon de res", proteins: 1.28, calories: 18.51},
-{name: "jocoque", proteins: 13.30, calories: 115.31}
+{name: "Jocoque", proteins: 13.30, calories: 115.31}
 ])
-
-User::create(email: "zsckare@gmail.com",password:"12qwaszx")
+puts "--->Creando usuario administrativo"
+User::create(email: "admin@admin.com",password:"12qwaszx")

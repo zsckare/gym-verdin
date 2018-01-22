@@ -1,0 +1,36 @@
+<div class="row" style="margin-top:2em;" id="clientprofile">
+    <div class="col-sm">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm"><h5>Editar Perfil</h5></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                       <div class="form-group">
+                           <label for="">Nombre</label>
+                           <input type="text" class="form-control" value="<%=@client.name%>">
+                       </div>
+                       <div class="form-group">
+                            <label for="">Apellidos</label>
+                            <input type="text" class="form-control" value="<%=@client.lastname%>">
+                        </div>
+                        <div class="form-group">
+                                <label for="">Usuario</label>
+                                <input type="text" class="form-control" value="<%=@client.user%>">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Contraseña</label>
+                                <input type="password" class="form-control" placeholder="Dejar en blanco si no se editara" name="newpass" id="newpass">
+                                <input type="hidden" name="oldpass">
+                            </div>
+                        <div class="form-group">
+                            <button class="btn btn-raised dark">Guardar Cambios</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -10,7 +10,7 @@ gem 'carrierwave'
 # Utils for carrierwave
 gem 'rmagick'
 # Use cloudinary for Image Storage
-gem 'cloudinary'
+# gem 'cloudinary'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use figaro forn ENV variables

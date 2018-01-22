@@ -1,29 +1,31 @@
 <div class="">
-	<div class="row">
+	<div class="row" style="margin-top:2em;">
 		<div class="col-sm">
-			<div class="jumbotron">
-			  <h1 class="display-3 center-text">Mega Fit Camp</h1>
+			<div class="jumbotron card white_bg">
+			  <h1 class="display-3 center-text">
+					<%=image_tag('megafit.png', class:'img-fluid mx-auto d-block')%>
+			  </h1>
 			  <p class="lead center-text">Hagamos sudar las paredes</p>
 			  <hr class="my-4">
 			  <div class="row">
 						<div class="col-sm"></div>
 			  	<div class="col-sm">
-			  		<a class="btn btn-secondary btn-lg center-text" href="<%=login_coach_path%>">Soy Entrenador</a>
+			  		<a class="btn btn-secondary btn-lg center-text primary_text" href="<%=login_coach_path%>"style="min-width: 250px !important;">Soy Entrenador</a>
 			  	</div>
 					
 			  	<div class="col-sm">
-			  		<a class="btn btn-info btn-lg" href="<%=login_client_path%>">Soy Cliente</a>
+			  		<a class="btn btn-info btn-lg dark_text" href="<%=login_client_path%>" style="min-width: 250px !important;">Soy Cliente</a>
 					</div>
 					<div class="col-sm"></div>
 			  </div>
 			  <div class="row" style="margin-top: 2em;">
-					<div class="col-sm-4"></div>
-			  	<div class="col-sm-4">
-					  <p class="lead">
-					    <a class="btn btn-primary btn-lg" href="<%=registro_path%>" role="button">Registrate</a>
-					  </p>
+					<div class="col-sm"></div>
+			  	<div class="col-sm">
+					  
+					    <a class="btn btn-primary btn-lg dark" style="min-width: 300px !important; color:white;" href="<%=registro_path%>" role="button">Registrate</a>
+					  
 					</div>
-					<div class="col-sm-4"></div>
+					<div class="col-sm"></div>
 			  </div>
 			</div>
 		</div>	

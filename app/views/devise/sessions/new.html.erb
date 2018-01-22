@@ -1,3 +1,8 @@
+<div class="row" style="margin-top:2em;">
+  <div class="col-sm">
+    <h5 class="center-text">Panel de administracion</h5>
+  </div>
+</div>
 <div class="row">
   <div class="col-sm"></div>
   <div class="col-sm">
@@ -12,7 +17,7 @@
                 <div class="row">
                   <div class="col-sm">
                     <div class="form-group">
-                        <%= f.label :email %>
+                        <%= f.label :email, "Correo Electronico" %>
                         <%= f.email_field :email, autofocus: true, class:' form-control' %>
                     </div>
                   </div>
@@ -22,7 +27,7 @@
                   <div class="row">
                       <div class="col-sm">
                         <div class="form-group">
-                            <%= f.label :password %>
+                            <%= f.label :password, "Contraseña" %>
                             <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
                         </div>
                       </div>
@@ -32,16 +37,19 @@
                 <% if devise_mapping.rememberable? -%>
                   <div class="field">
                     <%= f.check_box :remember_me %>
-                    <%= f.label :remember_me %>
+                    <%= f.label :remember_me, "Recordarme" %>
                   </div>
                 <% end -%>
               
-                <div class="actions">
-                  <%= f.submit "Iniciar Sesion", class: ' btn btn-raised btn-info' %>
+                <div class="row justify-content-between">
+                  <div class="col align-self-center">
+                    <div class="actions">
+                      <%= f.submit "Ingresar", class: ' btn btn-raised btn-info' %>
+                    </div>
+                  </div>
                 </div>
               <% end %>
               
-              <%= render "devise/shared/links" %>
               
             </div>
           </div>

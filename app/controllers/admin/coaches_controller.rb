@@ -32,7 +32,7 @@ class Admin::CoachesController < Admin::ApplicationController
     respond_to do |format|
       if @coach.save
         Blog.create(coach_id: @coach.id)
-        format.html { redirect_to admin_coach_path(@coach), notice: 'Se ha creado el entrenador.' }
+        format.html { redirect_to admin_coaches_path, notice: 'Se ha creado el entrenador.' }
         format.json { render :show, status: :created, location: @coach }
       else
         format.html { render :new }

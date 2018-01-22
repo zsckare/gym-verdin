@@ -28,10 +28,18 @@ $accent:#CDDC39;
 .primary_text{
   color: $primary !important;
 }
+.toUpper{
+  text-transform: uppercase;
+}
+.dark_text{
+  color: $dark !important;
+}
  .center-text{
      text-align: center;
  }
-
+.white_bg{
+  background-color: #fff !important;
+}
  .current-ex{
   border: 1px solid;
    padding:.3rem;
