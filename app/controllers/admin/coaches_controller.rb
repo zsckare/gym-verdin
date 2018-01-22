@@ -5,7 +5,7 @@ class Admin::CoachesController < Admin::ApplicationController
   # GET /coaches
   # GET /coaches.json
   def index
-    @coaches = Coach.all
+    @coaches = Coach.all.order('id DESC')
   end
 
   # GET /coaches/1

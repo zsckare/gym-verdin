@@ -12,9 +12,9 @@
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Telefono</th>
-              <th>Direccion</th>
+              <!-- <th>Direccion</th> -->
               <th>Entrenador</th>
-              <th>User</th>
+              <th>Usuario</th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -22,11 +22,11 @@
           <tbody>
             <% @clients.each do |client| %>
               <tr>
-                <td><%= client.name %></td>
-                <td><%= client.lastname %></td>
+                <td class="toUpper"><%= client.name %></td>
+                <td class="toUpper"><%= client.lastname %></td>
                 <td><%= client.phone %></td>
-                <td><%= client.address %></td>
-                <td><%= client.coach %></td>
+                <!-- <td><%= client.address %></td> -->
+                <td><%= client.coach.name %></td>
                 <td><%= client.user %></td>
                 <td><%= link_to 'Ver', admin_client_path(client) %></td>
                 <td><%= link_to 'Editar', edit_admin_client_path(client) %></td>
