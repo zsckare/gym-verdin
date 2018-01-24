@@ -23,6 +23,7 @@
 //= require turbolinks
 //= require_tree .
 
+Lockr.prefix = 'lockr';
 preloader = new $.materialPreloader({
     position: 'top',
     height: '5px',
@@ -208,6 +209,23 @@ function initVue(){
         });
 
     }
+    
+    if (document.querySelector("#coach_nav")) {
+        new Vue({
+            el: "#coach_nav",
+            data:{
+                user:{}
+            },
+            methods:{
+                
+                logout: function(){
+                    Lockr.flush();
+                    window.location.href = "/";
+                }
+            }
+        });
+    }
+    
     if (document.querySelector("#navigation")) {
         new Vue({
             el: "#navigation",
@@ -228,6 +246,10 @@ function initVue(){
                     var link2 = "/client/profile/index?uid="+this.user.id;
                     $("#edit_profile").attr("href", link2);
                     
+                },
+                logout: function(){
+                    Lockr.flush();
+                    window.location.href = "/";
                 }
             }
         });
