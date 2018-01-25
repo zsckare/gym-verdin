@@ -64,6 +64,8 @@ Rails.application.routes.draw do
     end
     resources :posts
     resources :clients
+    get 'profile', to: "profile#index"
+    put 'profile/update'
   end
 
   namespace :admin do

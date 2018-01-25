@@ -270,6 +270,27 @@ function initVue(){
             }
         });
     }
+    if(document.querySelector("#coachProfile")){
+        new Vue({
+            el: "#coachProfile",
+            data:{
+                user:{}
+            },
+            methods:{
+                editUser: function(){
+                    this.user ={
+                        name: $("#name").val(),
+                        user: $("#user").val(),
+                        newpass: $("#newpass").val()
+                    };
+                    var url  ="/entrenador/profile/update";
+                    axios.put(url,{coach:this.user,uid: $("#id").val()}).then(response=>{
+                        alert("actializado")
+                    });
+                }
+            }
+        });
+    }
     if (document.querySelector("#calculadora")) {
         new Vue({
             el: "#calculadora",
