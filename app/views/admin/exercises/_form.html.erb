@@ -1,4 +1,4 @@
-<%= form_for(exercise) do |f| %>
+<%= form_for([:admin,exercise], html: { multipart: true } ) do |f| %>
   <% if exercise.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
@@ -21,6 +21,9 @@
     <%= f.text_field :description, class: 'form-control' %>
   </div>
 
+  <div class="form-group">
+    <%= f.file_field :imagen %>
+  </div>
   <div class="actions">
     <%= f.submit class: 'btn btn-raised btn-info' %>
   </div>

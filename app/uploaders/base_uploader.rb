@@ -3,17 +3,18 @@
 class BaseUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  include CarrierWave::RMagick
+  # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
-  include Cloudinary::CarrierWave if Rails.env.production?
+  # include Cloudinary::CarrierWave if Rails.env.production?
+  magen translation missing: en.errors.messages.rmagick_processing_error
 
   process convert: 'png'
 
-  # Choose file storage to use for development enverioment
-  if Rails.env.development?
-    storage :file
-  end
+  # # Choose file storage to use for development enverioment
+  # if Rails.env.development?
+  #   storage :file
+  # end
 
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir

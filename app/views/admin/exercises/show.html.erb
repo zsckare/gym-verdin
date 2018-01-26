@@ -1,14 +1,19 @@
-<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @exercise.name %>
 </p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @exercise.category %>
+  <strong>Categoria:</strong>
+  <%= @exercise.category.name %>
 </p>
-
-<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
-<%= link_to 'Back', exercises_path %>
+<p>
+  <strong>Descripcion: </strong>
+  <%=@exercise.description%>
+</p>
+<p>
+  <%= image_tag(@exercise.imagen.url, style: 'width:200px;')%>
+</p>
+<%= link_to 'Editar', edit_admin_exercise_path(@exercise) %> |
+<%= link_to 'Regresar', admin_exercises_path %>

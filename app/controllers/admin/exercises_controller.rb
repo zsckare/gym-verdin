@@ -42,7 +42,7 @@ class Admin::ExercisesController < Admin::ApplicationController
   def update
     respond_to do |format|
       if @exercise.update(exercise_params)
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully updated.' }
+        format.html { redirect_to admin_exercises_path, notice: 'Exercise was successfully updated.' }
         format.json { render :show, status: :ok, location: @exercise }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class Admin::ExercisesController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exercise_params
-      params.require(:exercise).permit(:name, :category_id, :description)
+      params.require(:exercise).permit(:name, :category_id, :description,:imagen)
     end
 end
