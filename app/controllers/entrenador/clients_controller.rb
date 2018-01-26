@@ -8,6 +8,21 @@ class Entrenador::ClientsController < Entrenador::BaseController
 		@coach = Coach.find(params[:uid])
 		@client = Client.find(params[:id])
 		@notes = Note.where(client_id: @client.id)
+		@routines = Routine.where(client_id: params[:id])
+		@data = []
+		@routines.group_by(&:exercise).each do |exercise,elements|
+			puts exercise
+			# d = {
+			# 	name:exercise,
+			# 	data: elements.count
+			# }
+			d = [exercise,elements.count]
+			@data.push(d)
+			
+		end
+
+		puts @data
+
 	end
 
 end

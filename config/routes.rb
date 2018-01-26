@@ -54,6 +54,7 @@ Rails.application.routes.draw do
     resources :notes
     get 'profile/index'
     put 'profile/update'
+    post 'routines/created'
   end
   namespace :entrenador do
     root 'welcome#index'
@@ -66,6 +67,7 @@ Rails.application.routes.draw do
     resources :clients
     get 'profile', to: "profile#index"
     put 'profile/update'
+    
   end
 
   namespace :admin do

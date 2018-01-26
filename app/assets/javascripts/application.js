@@ -20,6 +20,8 @@
 //= require sweet-alert2-rails
 //= require sweetalert
 //= require snackbar
+//= require Chart.bundle
+//= require chartkick
 //= require turbolinks
 //= require_tree .
 
@@ -414,14 +416,17 @@ function initVue(){
                 inferiorCheked:[],
                 cardioCheked:[],
                 abdomenCheked:[],
+                
                 tiempo: {
                     minuto: 0,
                     segundo: 60
                 },
+                exercises: [],
                 segundo:60,
                 encurso: true,
                 tiempo_corriendo:null,
-                currentex: ''
+                currentex: '',
+                client:''
             },
             created: function(){
                 this.setExercises();
@@ -467,11 +472,12 @@ function initVue(){
                     this.encurso = false;
                     var segundos = 60;
                     var index = 0;
-                    var vuelta = 1;
+                    var vuelta = 0;
                     var ejercicios = this.superiorCheked;
                     debugea(ejercicios);
+                    var exs = [];
                     this.currentex = ejercicios[index];
-                    this.tiempo_corriendo = setInterval(function(){
+                    var tiempo_corriendo = setInterval(function(){
                      
                         segundos = segundos-1;
                         this.segundo= segundos;
@@ -479,9 +485,10 @@ function initVue(){
                         $("#crono").html(segundos);
                         if(this.segundo == 0)
                         {
+                            exs.push(ejercicios[index]);
                             segundos=60;
                             $("#crono").html(60);
-                            debugea("Cambiar ejercicio");
+                            // debugea("Cambiar ejercicio");
                             index++;
                             this.currentex = ejercicios[index];
                             // console.log(this.currentex);
@@ -490,15 +497,38 @@ function initVue(){
                             if(index==ejercicios.length){
                                 index = 0;
                                 this.currentex = ejercicios[index];
+                                debugea(vuelta);
                                 if(vuelta<4){
                                     vuelta++;
+                                    if(vuelta==4){
+                                        this.exercises = exs;
+                                        console.log("---->");
+                                        debugea(this.exercises);
+                                        clearInterval(tiempo_corriendo);
+                                        $("#crono").html(60);
+                                        var url = "/client/routines/created";
+                                        data = {
+                                            exercises: this.exercises,
+                                            client_id: $("#client_id").val()
+                                        };
+                                        console.log(data);
+                                        axios.post(url,data).then(response=>{
+
+                                        });
+                                    }
                                 }else{
-                                    stopear();
+                                    
+                                    
+                                    
                                 }
+
                             }
                         }     
-                    }, 1000);
-                   
+                    }, 1);
+                    this.tiempo_corriendo = tiempo_corriendo;
+                },
+                sendEx: function(){
+                    debugea(this.exercises)
                 },
                 sendNote: function(){
                     url = "/client/notes";
@@ -516,6 +546,7 @@ function initVue(){
                         $.snackbar({content: "Se han enviado tus comentarios"});
                     });
                 },
+                
                 stopear: function(){
                     clearInterval(this.tiempo_corriendo);
                     $("#crono").html(60);
@@ -534,13 +565,20 @@ function initVue(){
                     this.ejA = ab;
                     this.ejC = car;
                     this.ejI = inf;
+                    this.client = $("#client_id").val();
+                    // this.exercises = $("#ex").data('options');
                 }
                 
 
             }
         });
     }
+
+  
+    
 }
+
+
 
 function debugea(data){
     console.log(JSON.stringify(data))
@@ -576,7 +614,8 @@ ready = function(){
     if (document.querySelector("#froala-editor")) {
         $('textarea#froala-editor').froalaEditor();
     }
-      
+    
+
 }
 
 

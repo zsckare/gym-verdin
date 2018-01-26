@@ -21,8 +21,6 @@ class Entrenador::ProfileController < Entrenador::BaseController
       end
     end
 
-    private
-    
   
     
   end

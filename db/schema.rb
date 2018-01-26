@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108182943) do
+ActiveRecord::Schema.define(version: 20180126013310) do
 
   create_table "assessments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "points"
@@ -115,8 +115,10 @@ ActiveRecord::Schema.define(version: 20180108182943) do
     t.integer  "client_id"
     t.string   "exercise"
     t.string   "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "code"
+    t.string   "exercise_id"
     t.index ["client_id"], name: "index_routines_on_client_id", using: :btree
   end
 
