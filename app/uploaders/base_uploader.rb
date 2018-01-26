@@ -7,7 +7,8 @@ class BaseUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # include Cloudinary::CarrierWave if Rails.env.production?
-  magen translation missing: en.errors.messages.rmagick_processing_error
+  include Cloudinary::CarrierWave
+  # magen translation missing: en.errors.messages.rmagick_processing_error
 
   process convert: 'png'
 
