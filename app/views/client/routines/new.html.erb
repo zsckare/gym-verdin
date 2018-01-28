@@ -146,6 +146,15 @@
                                                     <p></p>
                                             </div>
                                             <div class="row">
+                                                <div class="col-sm-3">
+                                                    <img class="img-fluid" id="imagenbonita" :src="imageLink" alt="">
+                                                </div>
+                                                <div class="col-sm-9">
+                                                    <p id="desc">{{desciption}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+
                                                <div class="col-sm">
                                                 <div class="row">
                                                     <div class="col-sm">
@@ -179,5 +188,7 @@
     <div id="abdomen" data-options="<%=@abdomen.to_json%>"></div>
     <div id="cardio" data-options="<%=@cardio.to_json%>"></div>
     <div id="ex" data-options="<%=@exercises.to_json%>"></div>
+
+    <div id="data" data-options="<%=@all.to_json%>"></div>
 
 </div>

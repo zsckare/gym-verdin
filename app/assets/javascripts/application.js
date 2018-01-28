@@ -426,7 +426,12 @@ function initVue(){
                 encurso: true,
                 tiempo_corriendo:null,
                 currentex: '',
-                client:''
+                client:'',
+                data:[],
+                nombres: [],
+                imageLink:'',
+                desciption: ' ',
+                c:-1
             },
             created: function(){
                 this.setExercises();
@@ -477,6 +482,17 @@ function initVue(){
                     debugea(ejercicios);
                     var exs = [];
                     this.currentex = ejercicios[index];
+                    console.log(ejercicios[index]);
+                    var names = this.nombres;
+                    console.log(names);
+                    this.c = names.indexOf(ejercicios[index]);
+                    console.log("Aqui mero esta--->");
+                    console.log(this.c);
+                    var datosLocos = this.data;
+                    this.desciption = datosLocos[this.c].desc;
+                    
+                    this.imageLink = datosLocos[this.c].image;
+
                     var tiempo_corriendo = setInterval(function(){
                      
                         segundos = segundos-1;
@@ -490,11 +506,32 @@ function initVue(){
                             $("#crono").html(60);
                             // debugea("Cambiar ejercicio");
                             index++;
+                            
                             this.currentex = ejercicios[index];
+                            console.log("tamaño del arreglo = ",ejercicios.length);
+                            console.log("index",index);
+                            console.log(ejercicios[index]);
+                            this.c = names.indexOf(ejercicios[index]);
+                            
+                                console.log("Aqui mero esta--->");
+                                console.log("c=>",this.c);
+                                if(datosLocos[this.c].desc ===null){
+                                    this.desciption=" ";
+                                }else{
+                                this.desciption = datosLocos[this.c].desc;
+                                }
+                                this.imageLink = datosLocos[this.c].image;
+                                $("#desc").html(this.desciption);
+                                $("#imagenbonita").attr("src",this.imageLink);
                             // console.log(this.currentex);
                             $("#current-ex").html(ejercicios[index]);
                             console.log(ejercicios[index]);
-                            if(index==ejercicios.length){
+                            var tam =  ejercicios.length;
+                            var ant = tam -1;
+                            if(index==ant){
+                            //     alert("mmmm");
+                            // }
+                            // if(index==ejercicios.length){
                                 index = 0;
                                 this.currentex = ejercicios[index];
                                 debugea(vuelta);
@@ -524,7 +561,7 @@ function initVue(){
 
                             }
                         }     
-                    }, 1);
+                    }, 1000);
                     this.tiempo_corriendo = tiempo_corriendo;
                 },
                 sendEx: function(){
@@ -566,6 +603,12 @@ function initVue(){
                     this.ejC = car;
                     this.ejI = inf;
                     this.client = $("#client_id").val();
+                    this.data = $("#data").data('options');
+                    this.nombres =  $("#ex").data('options');
+                    console.log("--->");
+                    debugea(this.nombres);
+                    console.log("--->");
+                    debugea(this.data);
                     // this.exercises = $("#ex").data('options');
                 }
                 

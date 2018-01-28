@@ -14,14 +14,24 @@ class Client::RoutinesController < Client::ApplicationController
     end
     def new
         @exercises = []
+        @all = []
         Exercise.all.each do |ex|
             @exercises.push(ex.name)
+            d = {
+                desc: ex.description,
+                image: ex.imagen.url
+            }
+            @all.push(d)
         end
         @client = Client.find(params[:uid])
         @superior = Exercise.where(category_id: 1)
         @inferior = Exercise.where(category_id: 2)
         @abdomen = Exercise.where(category_id: 4)
         @cardio = Exercise.where(category_id: 3)
+
+
+        
+
     end
     def created
         ex = params[:exercises]
