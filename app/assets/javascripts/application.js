@@ -398,6 +398,8 @@ function initVue(){
                     i++;
                     
                 });
+
+                printJS('dieta', 'html');
                }
             }
         });
